@@ -146,3 +146,21 @@ body(JSON):
   "_id": "insert_your_recipe_id_here"
 }
 ```
+## Tests
+1. npm install test packages:
+```
+npm i jest --save-dev
+npm i supertest --save-dev
+```
+***
+2. add test commant line in package.json
+```
+"scripts": {
+  "test": "env-cmd -f ./config/test.env jest --testEnvironment=node --watch --runInBand"
+}
+```
+***
+3. Run test cases
+```
+npm test
+```

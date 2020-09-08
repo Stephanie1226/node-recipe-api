@@ -146,3 +146,9 @@ body(JSON):
   "_id": "insert_your_recipe_id_here"
 }
 ```
+## Tests
+nppm install test packages:
+```
+npm i jest --save-dev
+npm i supertest --save-dev
+```

@@ -4,7 +4,9 @@ const jwt = require('jsonwebtoken')
 const Recipe = require('../../src/models/recipe')
 const { userOne, userTwo, userThree } = require('./userDB')
 
+const recipeOneId = new mongoose.Types.ObjectId()
 const recipeOne = {
+  _id: recipeOneId,
   "title": "Guacamole",
   "preparation": "10 mins",
   "cook_time": "0 mins",
@@ -28,7 +30,9 @@ const recipeOne = {
   owner: userOne._id
 }
 
+const recipeTwoId = new mongoose.Types.ObjectId()
 const recipeTwo = {
+  _id: recipeTwoId,
   "title": "Lemon tart",
   "preparation": "20 mins",
   "cook_time": "30 mins",
@@ -52,7 +56,9 @@ const recipeTwo = {
   owner: userOne._id
 }
 
+const recipeThreeId = new mongoose.Types.ObjectId()
 const recipeThree = {
+  _id: recipeThreeId,
   "title": "Chocolate tart",
   "preparation": "20 mins",
   "cook_time": "40 mins",
@@ -73,7 +79,9 @@ const recipeThree = {
   owner: userOne._id
 }
 
+const recipeFourId = new mongoose.Types.ObjectId()
 const recipeFour = {
+  _id: recipeFourId,
   "title": "Tuna Casserole",
   "preparation": "15 mins",
   "cook_time": "20 mins",
@@ -97,7 +105,9 @@ const recipeFour = {
   owner: userTwo._id
 }
 
+const recipeFiveId = new mongoose.Types.ObjectId()
 const recipeFive = {
+  _id: recipeFiveId,
   "title": "Garlic Pesto Tuna Salad Sandwiches",
   "preparation": "10 mins",
   "cook_time": "0 mins",
@@ -119,7 +129,9 @@ const recipeFive = {
   owner: userTwo._id
 }
 
+const recipeSixId = new mongoose.Types.ObjectId()
 const recipeSix = {
+  _id: recipeSixId,
   "title": "Baked Spaghetti",
   "preparation": "25 mins",
   "cook_time": "1 hour",

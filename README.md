@@ -1,6 +1,6 @@
 # node-recipe-api
 * This is the back-end of the side project "Recipe App".
-* Using nodejs/express and mongoDB in this project. hosting on heroku with the following link: https://chieh-recipe-manager.herokuapp.com
+* Using nodejs/expressjs and mongoDB in this project. This is hosting on heroku with the following link: https://chieh-recipe-manager.herokuapp.com
 * Two documents in mongoDB: User, Recipe
 * User document saves the user information, including "name", "email" and "password".
 * Recipe document saves recipe information, including "title", "preparation", "cook_time", "servings", "ingredients" and "steps".

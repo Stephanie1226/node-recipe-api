@@ -43,6 +43,7 @@ test('Should create a new recipe', async () => {
         "Add salt, lime juice, and the rest: Sprinkle with salt and lime (or lemon) juice.",
         "Add the chopped onion, cilantro, black pepper, and chiles."
     ],
+    "public": false,
     owner: userOneId
   }).expect(201)
 })
@@ -97,6 +98,11 @@ test('Should filter recipes for a user', async () => {
   expect(response.body.length).toEqual(2)
 })
 
+test('Should get 3 public recipes', async () => {
+  const public_recipes = await request(app).get('/recipes/public').send().expect(200)
+  expect(public_recipes.body.length).toEqual(3)
+})
+
 test('Should delete a recipe for a user', async () => {
   await request(app)
     .delete('/recipes/delete')
@@ -109,5 +115,3 @@ test('Should delete a recipe for a user', async () => {
   const response = await Recipe.find({ owner: userThree._id})
   expect(response).toEqual([])
 })
-
-

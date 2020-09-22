@@ -1,4 +1,8 @@
 const express = require('express')
+/// For uploading image data
+const multer = require('multer')
+/// For resizing the images
+const sharp = require('sharp')
 
 const auth = require('../middleware/auth')
 const Recipe = require('../models/recipe')
@@ -19,10 +23,42 @@ router.post('/recipes', auth, async (req, res) => {
     res.status(400).send(e)
   }
 })
+/// Upload an image for the recipe
+const upload = multer({
+  limits: {
+    fileSize: 3000000
+  },
+  fileFilter(req, file, call_back) {
+    if (!file.originalname.match(/\.(jpg|jpeg|png|HEIC)$/)) {
+      return call_back(new Error('Please upload a valid photo. Format should be one of: jpg, jpeg, png or HEIC'))
+    }
+    call_back(undefined, true)
+  }
+})
+router.post('/recipes/:id/foodimg', upload.single('foodimg'), async (req, res) => {
+  const recipe = await Recipe.findById(req.params.id)
+  //console.log(recipe)
+  const buffer = await sharp(req.file.buffer).resize({ width: 600, height: 400 }).toBuffer()
+  recipe.img = buffer
+  await recipe.save()
+  res.send()
+}, (error, req, res, next) => {
+  res.status(400).send({ error: error.message })
+})
+
 /// Get all of the recipes for a user
 router.get('/recipes', auth, async (req, res) => {
   try {
     const recipes = await Recipe.find({ owner: req.user._id })
+    res.send(recipes)
+  } catch (e) {
+    res.status(500).send(e)
+  }
+})
+/// Get all of the recipes that is public
+router.get('/recipes/public', async (req, res) => {
+  try {
+    const recipes = await Recipe.find({ public: true })
     res.send(recipes)
   } catch (e) {
     res.status(500).send(e)

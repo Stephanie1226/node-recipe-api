@@ -27,6 +27,7 @@ const recipeOne = {
       "Add salt, lime juice, and the rest: Sprinkle with salt and lime (or lemon) juice.",
       "Add the chopped onion, cilantro, black pepper, and chiles."
   ],
+  "public": true,
   owner: userOne._id
 }
 
@@ -53,6 +54,7 @@ const recipeTwo = {
       "At this point you can strain the zest out and any egg solids that may be in the curd if you’d like, by pushing it through a fine mesh stainer, or just leave it as is.",
       "Cover lemon curd and chill until ready to use."
   ],
+  "public": true,
   owner: userOne._id
 }
 
@@ -76,6 +78,7 @@ const recipeThree = {
       "Using a rubber spatula, stir mixture until melted and smooth (if not completely melted, heat in the microwave for several seconds and stir, until melted).",
       "Pour mixture over chilled Oreo crust and refrigerate until set, at least 4 hours or overnight. (You can make the tart a day ahead of time.)"
   ],
+  "public": false,
   owner: userOne._id
 }
 
@@ -102,6 +105,7 @@ const recipeFour = {
       "In a large bowl, thoroughly mix noodles, onion, 1 cup cheese, peas, tuna, soup and mushrooms. Transfer to a 9x13 inch baking dish, and top with potato chip crumbs and remaining 1 cup cheese.",
       "Bake for 15 to 20 minutes in the preheated oven, or until cheese is bubbly."
   ],
+  "public": true,
   owner: userTwo._id
 }
 
@@ -126,6 +130,7 @@ const recipeFive = {
       "In a medium bowl, mix together tuna, mayonnaise, mustard, pesto, and garlic.",
       "Make four sandwiches by layering tuna, lettuce, and tomato slices between slices of bread. Serve."
   ],
+  "public": false,
   owner: userTwo._id
 }
 
@@ -155,6 +160,7 @@ const recipeSix = {
       "Whisk eggs, Parmesan cheese, and butter in a large bowl. Mix in spaghetti to egg mixture and toss to coat. Place half the spaghetti mixture into baking dish. Top with half the cottage cheese, mozzarella, and meat sauce. Repeat layers. Cover with aluminum foil.",
       "Bake in preheated oven for 40 minutes. Remove foil and continue to bake until the cheese is melted and lightly browned, 20 to 25 minutes longer."
   ],
+  "public": false,
   owner: userThree._id
 }
 

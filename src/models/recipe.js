@@ -30,6 +30,13 @@ const recipeSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: 'User'
+  },
+  public: {
+    type: Boolean,
+    required: true
+  },
+  img: {
+    type: Buffer
   }
 }, {
   timestamps: true

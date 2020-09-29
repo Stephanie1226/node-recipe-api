@@ -108,7 +108,7 @@ body(JSON):
 ```
 [POST request]: {{url}}/recipes/:id/foodimg
 ```
-body(form-data):
+body(form-data): <br />
 Key: foodimg, Value: [Select your image from your computer]
 ***
 3. Update your recipe

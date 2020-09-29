@@ -77,6 +77,7 @@ body(JSON):
 4. servings field is not reqired. Default value is "N/A"
 5. ingredients is required.
 6. steps field is required.
+7. public field is required.
 ```
 {
     "title": "Perfect Guacamole Recipe",
@@ -98,11 +99,19 @@ body(JSON):
       "Mash with a fork: Using a fork, roughly mash the avocado. (Don't overdo it! The guacamole should be a little chunky.)",
       "Add salt, lime juice, and the rest: Sprinkle with salt and lime (or lemon) juice.",
       "Add the chopped onion, cilantro, black pepper, and chiles."
-    ]
+    ],
+    "public": true
 }
 ```
 ***
-2. Update your recipe
+2. Upload a photo for the recipe
+```
+[POST request]: {{url}}/recipes/:id/foodimg
+```
+body(form-data):
+Key: foodimg, Value: [Select your image from your computer]
+***
+3. Update your recipe
 ```
 [PATCH request]: {{url}}/recipes/:id
 ```
@@ -125,17 +134,22 @@ body(JSON):
 }
 ```
 ***
-3. Read all of your recipes (no JSON body needed)
+4. Read all of your recipes (no JSON body needed)
 ```
 [GET request]: {{url}}/recipes
 ```
 ***
-4. Filter out some specific recipes (no JSON body needed)
+5. Read all of the public recipes (no JSON body needed)
+```
+[GET request]: {{url}}/recipes/public
+```
+***
+6. Filter out some specific recipes (no JSON body needed)
 ```
 [GET request]: {{url}}/recipes/<insert_keyword_here>
 ```
 ***
-5. Delete an existing recipe
+7. Delete an existing recipe
 ```
 [DELETE request]: {{url}}/recipes/delete
 ```

@@ -30,7 +30,7 @@ const upload = multer({
   },
   fileFilter(req, file, call_back) {
     if (!file.originalname.match(/\.(jpg|jpeg|png|HEIC)$/)) {
-      return call_back(new Error('Please upload a valid photo. Format should be one of: jpg, jpeg, png or HEIC'))
+      return call_back(new Error('Please upload a valid photo. Format should be one of: jpg, jpeg, png or HEIC.'))
     }
     call_back(undefined, true)
   }
@@ -79,7 +79,7 @@ router.get('/recipes/:keyword', auth, async (req, res) => {
 /// Update an existing recipe
 router.patch('/recipes/:id', auth, async (req, res) => {
   try {
-    const recipe = await Recipe.findOne({ _id: req.params.id})
+    const recipe = await Recipe.findOne({ _id: req.params.id })
     updates = Object.keys(req.body)
     updates.forEach((update) => recipe[update] = req.body[update])
     await recipe.save()

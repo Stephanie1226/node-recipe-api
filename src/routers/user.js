@@ -77,7 +77,7 @@ router.post('/users/me/avatar', auth,  upload.single('avatar'), async (req, res)
 router.delete('/users/me/avatar', auth, async (req, res) => {
   req.user.avatar = undefined
   await req.user.save()
-  res.send(req.user)
+  res.send()
 })
 /// User update their information
 router.patch('/users/updateme', auth, async (req, res) => {

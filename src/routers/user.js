@@ -59,7 +59,7 @@ const upload = multer({
     fileSize: 3000000
   },
   fileFilter(req, file, call_back) {
-    if (!file.originalname.match(/\.(jpg|jpeg|png|HEIC)$/)) {
+    if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|HEIC)$/)) {
       return call_back(new Error('Please upload a valid photo. Format should be one of: jpg, jpeg, png or HEIC.'))
     }
     call_back(undefined, true)

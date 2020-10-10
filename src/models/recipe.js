@@ -48,7 +48,6 @@ recipeSchema.methods.toJSON = function () {
 
   delete recipeObject.createdAt
   delete recipeObject.updatedAt
-  delete recipeObject.owner
 
   return recipeObject
 }

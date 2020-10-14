@@ -41,7 +41,7 @@ router.post('/recipes/:id/foodimg', upload.single('foodimg'), async (req, res) =
   const buffer = await sharp(req.file.buffer).resize({ width: 600, height: 400 }).toBuffer()
   recipe.img = buffer
   await recipe.save()
-  res.send()
+  res.send(recipe)
 }, (error, req, res, next) => {
   res.status(400).send({ error: error.message })
 })

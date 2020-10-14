@@ -7,15 +7,15 @@ const recipeSchema = new mongoose.Schema({
     trim: true
   },
   preparation: {
-    type: String,
+    type: Number,
     default: "N/A"
   },
   cook_time: {
-    type: String,
+    type: Number,
     default: "N/A"
   },
   servings: {
-    type: String,
+    type: Number,
     default: "N/A"
   },
   ingredients: [{

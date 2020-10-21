@@ -64,6 +64,33 @@ router.get('/recipes/public', async (req, res) => {
     res.status(500).send(e)
   }
 })
+/// Get all of the recipes that is dessert (public)
+router.get('/recipes/public/dessert', async (req, res) => {
+  try {
+    const recipes = await Recipe.find({ public: true, dessert: true })
+    res.send(recipes)
+  } catch (e) {
+    res.status(500).send(e)
+  }
+})
+/// Get all of the recipes that is meal (public)
+router.get('/recipes/public/meal', async (req, res) => {
+  try {
+    const recipes = await Recipe.find({ public: true, meal: true })
+    res.send(recipes)
+  } catch (e) {
+    res.status(500).send(e)
+  }
+})
+/// Get all of the recipes that is drink (public)
+router.get('/recipes/public/drink', async (req, res) => {
+  try {
+    const recipes = await Recipe.find({ public: true, drink: true })
+    res.send(recipes)
+  } catch (e) {
+    res.status(500).send(e)
+  }
+})
 /// Get recipes that matches the keyword
 router.get('/recipes/:keyword', auth, async (req, res) => {
   try {

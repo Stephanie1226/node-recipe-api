@@ -6,6 +6,18 @@ const recipeSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+  dessert: {
+    type: Boolean,
+    default: false
+  },
+  meal: {
+    type: Boolean,
+    default: false
+  },
+  drink: {
+    type: Boolean,
+    default: false
+  },
   preparation: {
     type: String,
     default: "N/A"

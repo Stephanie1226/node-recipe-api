@@ -47,7 +47,7 @@ router.post('/recipes/:id/foodimg', upload.single('foodimg'), async (req, res) =
 })
 
 /// Get all of the recipes for a user
-router.get('/recipes', auth, async (req, res) => {
+router.get('/recipes/me/all', auth, async (req, res) => {
   try {
     const recipes = await Recipe.find({ owner: req.user._id })
     res.send(recipes)

@@ -55,6 +55,24 @@ router.get('/recipes', auth, async (req, res) => {
     res.status(500).send(e)
   }
 })
+/// Get all of the public recipes for a user
+router.get('/recipes/me/public', auth, async (req, res) => {
+  try {
+    const recipes = await Recipe.find({ owner: req.user._id, public: true })
+    res.send(recipes)
+  } catch (e) {
+    res.status(500).send(e)
+  }
+})
+/// Get all of the private recipes for a user
+router.get('/recipes/me/private', auth, async (req, res) => {
+  try {
+    const recipes = await Recipe.find({ owner: req.user._id, public: false })
+    res.send(recipes)
+  } catch (e) {
+    res.status(500).send(e)
+  }
+})
 /// Get all of the recipes that is public
 router.get('/recipes/public', async (req, res) => {
   try {

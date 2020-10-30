@@ -38,17 +38,22 @@ const recipeSchema = new mongoose.Schema({
     type: String,
     required: true
   }],
-  owner: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: 'User'
-  },
   public: {
     type: Boolean,
     required: true
   },
   img: {
     type: Buffer
+  },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'User'
+  },
+  owner_name: {
+    type: String,
+    required: true,
+    ref: 'User'
   }
 }, {
   timestamps: true

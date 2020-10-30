@@ -14,7 +14,8 @@ const router = new express.Router()
 router.post('/recipes', auth, async (req, res) => {
   const recipe = new Recipe({
     ...req.body,
-    owner: req.user._id
+    owner: req.user._id,
+    owner_name: req.user.name
   })
   try {
     await recipe.save()

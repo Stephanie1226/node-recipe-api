@@ -111,7 +111,7 @@ router.get('/recipes/public/drink', async (req, res) => {
   }
 })
 /// Get a specific (public) recipe that matches the id
-router.get('/recipes/:id', async (req, res) => {
+router.get('/recipes/public/:id', async (req, res) => {
   try {
     const _id = req.params.id
     const recipe = await Recipe.findOne({ _id, public: true })

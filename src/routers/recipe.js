@@ -110,6 +110,19 @@ router.get('/recipes/public/drink', async (req, res) => {
     res.status(500).send(e)
   }
 })
+/// Get a specific (public) recipe that matches the id
+router.get('/recipes/:id', async (req, res) => {
+  try {
+    const _id = req.params.id
+    const recipe = await Recipe.findOne({ _id, public: true })
+    if(!recipe) {
+      return res.status(404).send()
+    }
+    res.send(recipe)
+  } catch (e) {
+    res.status(500).send(e)
+  }
+})
 /// Get recipes that matches the keyword
 router.get('/recipes/:keyword', auth, async (req, res) => {
   try {

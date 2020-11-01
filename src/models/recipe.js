@@ -19,20 +19,20 @@ const recipeSchema = new mongoose.Schema({
     default: false
   },
   preparation: {
-    type: String,
-    default: "0"
+    type: Number,
+    default: 0
   },
   cook_time: {
-    type: String,
-    default: "0"
+    type: Number,
+    default: 0
   },
   total_time: {
     type: Number,
     required: true
   },
   servings: {
-    type: String,
-    default: "0"
+    type: Number,
+    default: 0
   },
   ingredients: [{
     type: String,

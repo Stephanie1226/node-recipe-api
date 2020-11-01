@@ -76,8 +76,14 @@ router.get('/recipes/me/private', auth, async (req, res) => {
 })
 /// Get all of the recipes that is public
 router.get('/recipes/public', async (req, res) => {
+  const sort = {}
+  if (req.query.sortBy) {
+    const parts = req.query.sortBy.split(':')
+    sort[parts[0]] = parts[1] === 'desc' ? -1 : 1
+  }
+
   try {
-    const recipes = await Recipe.find({ public: true })
+    const recipes = await Recipe.find({ public: true }).sort(sort)
     res.send(recipes)
   } catch (e) {
     res.status(500).send(e)

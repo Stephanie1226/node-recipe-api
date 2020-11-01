@@ -91,8 +91,14 @@ router.get('/recipes/public', async (req, res) => {
 })
 /// Get all of the recipes that is dessert (public)
 router.get('/recipes/public/dessert', async (req, res) => {
+  const sort = {}
+  if (req.query.sortBy) {
+    const parts = req.query.sortBy.split(':')
+    sort[parts[0]] = parts[1] === 'desc' ? -1 : 1
+  }
+
   try {
-    const recipes = await Recipe.find({ public: true, dessert: true })
+    const recipes = await Recipe.find({ public: true, dessert: true }).sort(sort)
     res.send(recipes)
   } catch (e) {
     res.status(500).send(e)
@@ -100,8 +106,14 @@ router.get('/recipes/public/dessert', async (req, res) => {
 })
 /// Get all of the recipes that is meal (public)
 router.get('/recipes/public/meal', async (req, res) => {
+  const sort = {}
+  if (req.query.sortBy) {
+    const parts = req.query.sortBy.split(':')
+    sort[parts[0]] = parts[1] === 'desc' ? -1 : 1
+  }
+
   try {
-    const recipes = await Recipe.find({ public: true, meal: true })
+    const recipes = await Recipe.find({ public: true, meal: true }).sort(sort)
     res.send(recipes)
   } catch (e) {
     res.status(500).send(e)
@@ -109,8 +121,14 @@ router.get('/recipes/public/meal', async (req, res) => {
 })
 /// Get all of the recipes that is drink (public)
 router.get('/recipes/public/drink', async (req, res) => {
+  const sort = {}
+  if (req.query.sortBy) {
+    const parts = req.query.sortBy.split(':')
+    sort[parts[0]] = parts[1] === 'desc' ? -1 : 1
+  }
+
   try {
-    const recipes = await Recipe.find({ public: true, drink: true })
+    const recipes = await Recipe.find({ public: true, drink: true }).sort(sort)
     res.send(recipes)
   } catch (e) {
     res.status(500).send(e)

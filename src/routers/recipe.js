@@ -77,7 +77,12 @@ router.get('/recipes/me/private', auth, async (req, res) => {
 /// Get all of the recipes that is public
 router.get('/recipes/public', async (req, res) => {
   try {
-    const recipes = await Recipe.find({ public: true })
+    await Recipe.populate({
+      path: 'recipes',
+      match: {
+        public: true
+      },
+    }).execPopulate()
     res.send(recipes)
   } catch (e) {
     res.status(500).send(e)

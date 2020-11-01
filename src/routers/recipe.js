@@ -79,7 +79,7 @@ router.get('/recipes/public', async (req, res) => {
   var match = { public: true }
   const sort = {}
   if (req.query.publicCategory) {
-    match.req.query.publicCategory = true
+    match[req.query.publicCategory] = true
   }
   if (req.query.sortBy) {
     const parts = req.query.sortBy.split(':')

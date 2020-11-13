@@ -18,7 +18,7 @@ const recipeSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
-  preparation: {
+  c: {
     type: Number,
     default: 0
   },
@@ -66,9 +66,6 @@ const recipeSchema = new mongoose.Schema({
 recipeSchema.methods.toJSON = function () {
   const recipe = this
   const recipeObject = recipe.toObject()
-
-  delete recipeObject.createdAt
-  delete recipeObject.updatedAt
 
   return recipeObject
 }

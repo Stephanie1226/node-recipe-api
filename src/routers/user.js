@@ -100,5 +100,25 @@ router.delete('/users/deleteme', auth, async (req, res) => {
   }
 })
 
+///Add a saved recipe
+router.post('/users/saverecipes', auth, async(req, res) => {
+  try {
+    await req.user.savedRecipes.push(req.body.recipeId)
+    await req.user.save()
+    res.send(req.user)
+  } catch (e) {
+    res.status(500).send()
+  }
+})
+///Remove a saved recipe
+router.post('/users/unsaverecipes', auth, async(req, res) => {
+  try {
+    req.user.savedRecipes = await req.user.savedRecipes.filter(savedRecipe => savedRecipe !== req.body.recipeId)
+    await req.user.save()
+    res.send(req.user)
+  } catch (e) {
+    res.status(500).send()
+  }
+})
 
 module.exports = router

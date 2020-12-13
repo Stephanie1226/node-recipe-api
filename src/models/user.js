@@ -47,7 +47,8 @@ const userSchema = new mongoose.Schema({
       type: String,
       require: true
     }
-  }]
+  }],
+  savedRecipes: [mongoose.Schema.Types.ObjectId]
 }, {
   timestamps: true
 })

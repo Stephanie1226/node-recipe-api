@@ -74,6 +74,15 @@ router.get('/recipes/me/private', auth, async (req, res) => {
     res.status(500).send(e)
   }
 })
+/// Get all of the public recipes of a specific user
+router.get('/recipes/specificuser/recipe/:id', async (req, res) => {
+  try {
+    const recipes = await Recipe.find({ owner: req.params.id, public: true })
+    res.send(recipes)
+  } catch (e) {
+    res.status(500).send(e)
+  }
+})
 /// Get all of the recipes that is public
 router.get('/recipes/public', async (req, res) => {
   var match = { public: true }
@@ -108,6 +117,19 @@ router.get('/recipes/public/:id', async (req, res) => {
 })
 /// Get recipes that matches the keyword
 router.get('/recipes/:keyword', auth, async (req, res) => {
+  try {
+    const keyword = await req.params.keyword.toLowerCase()
+    const recipes = await Recipe.find({ owner: req.user._id })
+    const filtered = await recipes.filter((recipe) => recipe.title.toLowerCase().includes(keyword))
+
+    res.send(filtered)
+  } catch (e) {
+    res.status(500).send(e)
+  }
+})
+/// Get recipes that matches the saved ones
+/// Might need double check on this
+router.get('/recipes/savedrecipes', auth, async (req, res) => {
   try {
     const keyword = await req.params.keyword.toLowerCase()
     const recipes = await Recipe.find({ owner: req.user._id })

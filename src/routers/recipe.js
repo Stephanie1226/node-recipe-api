@@ -75,7 +75,7 @@ router.get('/recipes/me/private', auth, async (req, res) => {
   }
 })
 /// Get all of the public recipes of a specific user
-router.get('/recipes/specificuser/recipe/:id', async (req, res) => {
+router.get('/recipes/exploreuser/recipe/:id', async (req, res) => {
   try {
     const recipes = await Recipe.find({ owner: req.params.id, public: true })
     res.send(recipes)

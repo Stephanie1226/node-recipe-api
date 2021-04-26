@@ -160,6 +160,36 @@ body(JSON):
   "_id": "insert_your_recipe_id_here"
 }
 ```
+***
+8. Get public recipes of a specific user
+```
+[GET request]: {{url}}/recipes/exploreuser/recipe/:userId
+```
+body(JSON):
+1. Use the userId to find their public recipes and counts
+```
+{
+  "recipes": [{
+    ...recipe 1
+    }, {
+    ...recipe 2
+    },{
+    ...recipe 3
+    }
+  ],
+  counts: [
+    {
+      "dessert_count": 2
+    },
+    {
+      "meal_count": 1
+    },
+    {
+      "drink_count": 1
+    }
+  ]
+}
+```
 ## Tests
 1. npm install test packages:
 ```

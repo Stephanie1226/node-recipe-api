@@ -78,7 +78,12 @@ router.get('/recipes/me/private', auth, async (req, res) => {
 router.get('/recipes/exploreuser/recipe/:id', async (req, res) => {
   try {
     const recipes = await Recipe.find({ owner: req.params.id, public: true })
-    res.send(recipes)
+    const dessert_count = await Recipe.find({ owner: req.params.id, public: true, dessert: true }).count()
+    const meal_count = await Recipe.find({ owner: req.params.id, public: true, meal: true }).count()
+    const drink_count = await Recipe.find({ owner: req.params.id, public: true, drink: true }).count()
+
+
+    res.send({recipes: [recipes], counts: [{"dessert_count": dessert_count}, {"meal_count": meal_count}, {"drink_count": drink_count}]})
   } catch (e) {
     res.status(500).send(e)
   }
